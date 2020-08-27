@@ -1,1 +1,4 @@
-<h1>Welcome to Page </h1>
+<style>
+<?php include "css/style.css";?>
+</style>
+

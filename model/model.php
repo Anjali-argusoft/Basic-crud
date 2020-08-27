@@ -17,41 +17,37 @@ class Model
 
     }
 
-    public function update($userID, $userName, $userAge)
+    public function update($id, $name, $age)
     {
         $dbcon = new Dbconnection();
         $conn = $dbcon->OpenCon();
+
         // $conn = OpenCon();
-        $query = "UPDATE USER SET name = '$userName', age = '$userAge' where id = '$userID'";
+        $query = "UPDATE USER SET name = '$name', age = '$age' where id = '$id'";
         $stmt = $conn->prepare($query);
         $result = $stmt->execute();
-        if ($result) {
-            echo "User updated, Check updated list <a href='viewlist.php'> here</a>";
-        } else {echo "Enter all required fields";}
+        return $result;
 
     }
     public function fetchUser()
     {
         $dbcon = new Dbconnection();
         $conn = $dbcon->OpenCon();
-
         //fetch data
         $getUsers = $conn->prepare('SELECT * FROM USER');
         $getUsers->execute();
         $users = $getUsers->fetchAll();
-        if ($users) {
-            foreach ($users as $user) {
-                //echo $user['id'] . $user['name'] . $user['age'] . "<br/>";
-                echo " <tr>
-                <td>" . $user['id'] . "</td>
-                <td>" . $user['name'] . "</td>
-                <td>" . $user['age'] . "</td>
+        return $users;
 
-                <td><a href='update.php?id=$user[id]&&name=$user[name]&&age=$user[age]'>Edit</a></td>
-                <td><a href='delete.php?id=$user[id]'>Delete</a></td> <br><br>
-            </tr>";
-            }
+    }
 
-        }
+    public function removeUser($uID)
+    {
+        $dbcon = new Dbconnection();
+        $conn = $dbcon->OpenCon();
+        //delete data
+        $query = "DELETE FROM USER WHERE id= '$uID'";
+        $data = $conn->exec($query);
+
     }
 }

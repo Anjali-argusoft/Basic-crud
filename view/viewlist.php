@@ -1,12 +1,20 @@
+<?php include "./../header.php";?>
 <style>
 td{
     padding:10px ;
 }
 </style>
-<?php
-include "./../controller/controller.php";
-?>
 
+<html>
+<div class="topnav">
+<a href="../index.php">Home</a>
+    <a href="create.php">Add Product</a>
+  <a href="viewlist.php">View Product</a>
+  </div>
+<head>
+</head>
+<body>
+<?php include "./../controller/controller.php";?>
 
 <table>
 <tr>
@@ -15,18 +23,29 @@ include "./../controller/controller.php";
 <td><b>Age</td>
 <td colspan=2><b>Operation</td>
 </tr>
-
-
-</table>
-
 <?php
 $controller = new Controller();
-$controller->getUser();
+$result = $controller->getUser();
+if ($result) {
+    foreach ($result as $user) {
+        echo " <tr>
+        <td>" . $user['id'] . "</td>
+        <td>" . $user['name'] . "</td>
+        <td>" . $user['age'] . "</td>
+        <td><a href='update.php?id=$user[id]&&name=$user[name]&&age=$user[age]'>Edit</a></td>
+        <td><a href='delete.php?id=$user[id]'>Delete</td>
+    </tr>";
+    }
 
+}
 ?>
 
 
 
+</table>
 
 
+
+</body>
+</html>
 

@@ -12,12 +12,19 @@ class Controller
     {
         $model = new Model();
         $data = $model->update($id, $name, $age);
+        return $data;
     }
     public function getUser()
     {
         $model = new Model();
         $data = $model->fetchUser();
+        return $data;
 
+    }
+    public function deleteUser($uID)
+    {
+        $model = new Model();
+        $data = $model->removeUser($uID);
     }
 
 }
