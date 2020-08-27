@@ -9,6 +9,5 @@
 
 <h1> Welcome to Dashboard</h1>
 
-<?php include "footer.php";?>
 
 

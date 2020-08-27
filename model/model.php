@@ -2,12 +2,12 @@
 include "./../dbconfig.php";
 class Model
 {
-    public function insert($id, $name, $age)
+    public function insert($id, $name, $age, $pic)
     {
         $dbcon = new Dbconnection();
         $conn = $dbcon->OpenCon();
         // $conn = OpenCon();
-        $query = "INSERT INTO USER VALUES('$id', '$name', '$age')";
+        $query = "INSERT INTO USER VALUES('$id', '$name', '$age','$pic')";
         $data = $conn->exec($query);
         if ($data) {
             echo "User added, Check updated list <a href='viewlist.php'>here</a>";
@@ -17,13 +17,12 @@ class Model
 
     }
 
-    public function update($id, $name, $age)
+    public function update($id, $name, $age, $pic)
     {
         $dbcon = new Dbconnection();
         $conn = $dbcon->OpenCon();
-
         // $conn = OpenCon();
-        $query = "UPDATE USER SET name = '$name', age = '$age' where id = '$id'";
+        $query = "UPDATE USER SET name = '$name', age = '$age', pic = '$pic' where id = '$id'";
         $stmt = $conn->prepare($query);
         $result = $stmt->execute();
         return $result;

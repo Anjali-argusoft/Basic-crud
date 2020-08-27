@@ -21,6 +21,7 @@ td{
 <td><b>User Id</td>
 <td><b>Name</td>
 <td><b>Age</td>
+<td><b>Image</td>
 <td colspan=2><b>Operation</td>
 </tr>
 <?php
@@ -32,6 +33,7 @@ if ($result) {
         <td>" . $user['id'] . "</td>
         <td>" . $user['name'] . "</td>
         <td>" . $user['age'] . "</td>
+        <td><img src='" . "/www/crud/image/" . $user['pic'] . "' height='100' width='100'/> </td>
         <td><a href='update.php?id=$user[id]&&name=$user[name]&&age=$user[age]'>Edit</a></td>
         <td><a href='delete.php?id=$user[id]'>Delete</td>
     </tr>";

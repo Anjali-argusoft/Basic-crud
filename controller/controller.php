@@ -2,16 +2,16 @@
 include './../model/model.php';
 class Controller
 {
-    public function createUser($id, $name, $age)
+    public function createUser($id, $name, $age, $pic)
     {
         $model = new Model();
-        $data = $model->insert($id, $name, $age);
+        $data = $model->insert($id, $name, $age, $pic);
 
     }
-    public function updateUser($id, $name, $age)
+    public function updateUser($id, $name, $age, $pic)
     {
         $model = new Model();
-        $data = $model->update($id, $name, $age);
+        $data = $model->update($id, $name, $age, $pic);
         return $data;
     }
     public function getUser()
